@@ -1,0 +1,36 @@
+.tab-name {
+  color: #fec653;
+  font-size: 22px;
+  font-weight: 500;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+.non-active-tab-name {
+  color: white;
+  font-size: 22px;
+  font-weight: 500;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+.hr-line {
+  width: 100%;
+  background-color: #fec653;
+  border: 2px solid #fec653;
+  padding-top: 0px;
+}
+.hide-line {
+  border: 0px none;
+  background-color: transparent;
+}
+.tab-item {
+  width: fit-content;
+  text-align: center;
+  background-color: transparent;
+  border: 0px none;
+  border-bottom: 3px solid #fec653;
+}
+
+.tab-item-element {
+  margin-right: 50px;
+}
