@@ -15,6 +15,7 @@ body {
   background-image: url('https://assets.ccbp.in/frontend/react-js/match-game-bg.png');
   min-height: 100vh;
   background-size: cover;
+  padding-bottom: 50px;
 }
 .tab-items-container {
   display: flex;
@@ -24,11 +25,16 @@ body {
 }
 .images-list-container {
   display: flex;
-  width: 800px;
+  width: 650px;
   flex-wrap: wrap;
   list-style-type: none;
 }
 .thumbnail-images-container {
   display: flex;
   justify-content: center;
+}
+.game-over-card {
+  display: flex;
+  justify-content: center;
+  height: 100vh;
 }

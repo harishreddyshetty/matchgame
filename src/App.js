@@ -3,6 +3,7 @@ import Navbar from './Component/Navbar/index'
 import Image from './Component/Image/index'
 import TabComponent from './Component/TabComponent/index'
 import ImagesComponent from './Component/ImagesComponent/index'
+import GameOverCard from './Component/GameOverCard/index'
 
 import './App.css'
 
@@ -261,6 +262,18 @@ class App extends Component {
     activeTab: tabsList[0].tabId,
     activeImage: imagesList[0].imageUrl,
     activeImageId: imagesList[0].id,
+    countdown: 60,
+    answer: true,
+  }
+
+  componentDidMount() {
+    this.timerID = setInterval(this.timer, 1000)
+  }
+
+  clearTimeInterval = () => clearInterval(this.timerID)
+
+  timer = () => {
+    this.setState(prevState => ({countdown: prevState.countdown - 1}))
   }
 
   changeActiveTab = id => {
@@ -277,21 +290,32 @@ class App extends Component {
         score: prevState.score + 1,
       }))
     } else {
-      this.setState({
-        activeImage: imagesList[randomImage].imageUrl,
-        activeImageId: imagesList[randomImage].id,
-      })
+      this.clearTimeInterval()
+      this.setState({answer: false})
     }
   }
 
+  startGame = () => {
+    this.setState({countdown: 60, score: 0, answer: true})
+    this.componentDidMount()
+  }
+
+  stopTime = () => {
+    this.clearTimeInterval()
+  }
+
   render() {
-    const {activeTab, activeImage, score} = this.state
+    const {activeTab, activeImage, score, countdown, answer} = this.state
+
+    if (countdown === 0) {
+      this.stopTime()
+    }
     const displayThumbnailImages = imagesList.filter(
       eachImage => eachImage.category === activeTab,
     )
-    return (
-      <div className="game-app-bg">
-        <Navbar score={score} />
+
+    const game = (
+      <div className="game-container">
         <Image imageUrl={activeImage} />
         <ul className="tab-items-container">
           {tabsList.map(eachItem => (
@@ -314,6 +338,18 @@ class App extends Component {
             ))}
           </ul>
         </div>
+      </div>
+    )
+
+    const gameOver = (
+      <div className="game-over-card">
+        <GameOverCard startGame={this.startGame} score={score} />
+      </div>
+    )
+    return (
+      <div className="game-app-bg">
+        <Navbar score={score} countdown={countdown} />
+        {countdown > 0 && answer ? game : gameOver}
       </div>
     )
   }
