@@ -22,6 +22,7 @@
 .hide-line {
   border: 0px none;
   background-color: transparent;
+  cursor: pointer;
 }
 .tab-item {
   width: fit-content;
@@ -29,6 +30,7 @@
   background-color: transparent;
   border: 0px none;
   border-bottom: 3px solid #fec653;
+  cursor: pointer;
 }
 
 .tab-item-element {

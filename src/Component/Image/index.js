@@ -5,7 +5,7 @@ const Image = props => {
 
   return (
     <div className="image-section">
-      <img className="image" alt="orange" src={imageUrl} />
+      <img className="image" alt="match" src={imageUrl} />
     </div>
   )
 }

@@ -45,7 +45,8 @@
   justify-content: center;
   align-items: center;
   margin-top: 0px;
-  padding-top: p0x;
+  padding-top: 0px;
+  cursor: pointer;
 }
 
 .reset-img {
